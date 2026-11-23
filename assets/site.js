@@ -67,7 +67,7 @@ function renderHeatmap(mountId, book) {
   const st = book.status, W = 960, H = mount.dataset.h ? +mount.dataset.h : 340;
   const items = st.holdings.filter(r => r.weight).map(r => ({
     value: r.weight, tk: r.ticker, day: r.day_change, ret: r.return,
-    px: r.price, entry: r.entry_price, w: r.weight, sector: r.sector,
+    px: r.price, entry: r.entry_price, wt: r.weight, sector: r.sector,
     company: r.company,
   }));
   const vmax = Math.max(0.02, ...items.map(d => Math.abs(d.day ?? 0)));
@@ -83,7 +83,7 @@ function renderHeatmap(mountId, book) {
       svg += `<text class="hm-tk" x="${cx}" y="${cy - (big ? 12 : 3)}" text-anchor="middle" font-size="${big ? 17 : 12.5}" fill="${tkFill}">${t.tk}</text>`;
       svg += `<text class="hm-pct" x="${cx}" y="${cy + (big ? 8 : 13)}" text-anchor="middle" font-size="${big ? 12.5 : 10}" fill="${pcFill}">${dayGlyph(t.day)}${fmtPct(t.day, 2)}</text>`;
       if (big || (t.w > 78 && t.h > 56)) {
-        svg += `<text class="hm-w" x="${cx}" y="${cy + (big ? 26 : 27)}" text-anchor="middle" font-size="10" fill="${pcFill}">${fmtPct(t.w, 1, false)} wt</text>`;
+        svg += `<text class="hm-w" x="${cx}" y="${cy + (big ? 26 : 27)}" text-anchor="middle" font-size="10" fill="${pcFill}">${fmtPct(t.wt, 1, false)} wt</text>`;
       }
     }
     svg += `</g>`;
@@ -99,7 +99,7 @@ function renderHeatmap(mountId, book) {
       tip.innerHTML = `<div class="t">${d.company ? esc(d.company) : d.tk}</div>` +
         `<div class="row"><span>${d.tk}</span><span>${esc((d.sector || "").replace(/_/g, " "))}</span></div>` +
         `<div class="row"><span>1-day</span><span style="color:${(d.day ?? 0) > FLAT_EPS ? "#5ad0a6" : Math.abs(d.day ?? 0) <= FLAT_EPS ? "#f2b25c" : "#f0958c"}">${dayGlyph(d.day)}${fmtPct(d.day, 2)}</span></div>` +
-        `<div class="row"><span>weight</span><span>${fmtPct(d.w, 2, false)}</span></div>` +
+        `<div class="row"><span>weight</span><span>${fmtPct(d.wt, 2, false)}</span></div>` +
         `<div class="row"><span>price</span><span>${fmtPx(d.px, st.currency)}</span></div>` +
         `<div class="row"><span>entry</span><span>${fmtPx(d.entry, st.currency)}</span></div>` +
         `<div class="row"><span>since entry</span><span>${fmtPct(d.ret, 1)}</span></div>`;
