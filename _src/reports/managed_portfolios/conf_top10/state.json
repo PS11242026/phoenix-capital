@@ -1,0 +1,82 @@
+{
+  "inception": "2026-06-04",
+  "benchmark_entry": {
+    "SPY": 757.2550048828125,
+    "QQQ": 741.8599853515625
+  },
+  "books": {
+    "discount_x_conf_top10": [
+      {
+        "ticker": "MMS",
+        "discount": 4.755931966313579,
+        "sector": "industrials_assetlight_services",
+        "conf": 0.505,
+        "entry_price": 60.64500045776367
+      },
+      {
+        "ticker": "WHR",
+        "discount": 4.218364331422412,
+        "sector": "consumer_discretionary",
+        "conf": 0.505,
+        "entry_price": 38.7400016784668
+      },
+      {
+        "ticker": "KR",
+        "discount": 4.124266794909185,
+        "sector": "consumer_staples",
+        "conf": 0.84,
+        "entry_price": 62.380001068115234
+      },
+      {
+        "ticker": "CPB",
+        "discount": 3.2943927812345697,
+        "sector": "consumer_staples",
+        "conf": 0.84,
+        "entry_price": 21.334999084472656
+      },
+      {
+        "ticker": "CAG",
+        "discount": 2.91445864061098,
+        "sector": "consumer_staples",
+        "conf": 0.84,
+        "entry_price": 12.626999855041504
+      },
+      {
+        "ticker": "ANGI",
+        "discount": 2.8878761047646657,
+        "sector": "internet_platforms_marketplaces",
+        "conf": 0.993,
+        "entry_price": 6.275000095367432
+      },
+      {
+        "ticker": "BJ",
+        "discount": 2.72527462338944,
+        "sector": "consumer_staples",
+        "conf": 0.84,
+        "entry_price": 89.13999938964844
+      },
+      {
+        "ticker": "FLO",
+        "discount": 2.6244166951128425,
+        "sector": "consumer_staples",
+        "conf": 0.84,
+        "entry_price": 7.289999961853027
+      },
+      {
+        "ticker": "YELP",
+        "discount": 2.5953911646826757,
+        "sector": "internet_platforms_marketplaces",
+        "conf": 0.993,
+        "entry_price": 23.520000457763672
+      },
+      {
+        "ticker": "QNST",
+        "discount": 2.485763260371288,
+        "sector": "internet_platforms_marketplaces",
+        "conf": 0.993,
+        "entry_price": 11.829999923706055
+      }
+    ]
+  },
+  "note": "Restored from site/data/us_status.json (as of 2026-07-12); frozen inception book."
+}

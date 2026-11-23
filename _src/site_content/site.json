@@ -1,0 +1,14 @@
+{
+  "brand": "Phoenix Capital",
+  "tagline": "Institutional-grade equity research. One disciplined signal.",
+  "contact_email": "pulkiit.sharma2002@gmail.com",
+  "code_url": "https://github.com/PS11242026/dcf-valuation-platform",
+  "refresh_seconds": 60,
+  "quote_seconds": 60,
+  "news_seconds": 300,
+  "finnhub_key": "",
+  "books": [
+    {"key": "us", "name": "conf_top10", "label": "US Deep-Discount 10",
+     "nav": "Portfolio", "flag": "us", "status_badge": "live"}
+  ]
+}

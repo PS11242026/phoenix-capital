@@ -1,0 +1,4 @@
+# regenerated on every run; not needed to rebuild the site
+*.xlsx
+reports/managed_portfolios/*/figures/*.png
+reports/managed_portfolios/*/dashboard*

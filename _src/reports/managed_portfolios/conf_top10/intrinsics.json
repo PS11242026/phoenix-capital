@@ -1,0 +1,46 @@
+{
+  "as_of": "2026-07-12",
+  "source": "site snapshot 2026-07-12",
+  "holdings": {
+    "MMS": {
+      "intrinsic": 357.15,
+      "discount": 4.8626
+    },
+    "WHR": {
+      "intrinsic": 216.27,
+      "discount": 4.4794
+    },
+    "KR": {
+      "intrinsic": 315.97,
+      "discount": 4.017
+    },
+    "CPB": {
+      "intrinsic": 93.73,
+      "discount": 3.389
+    },
+    "CAG": {
+      "intrinsic": 50.35,
+      "discount": 2.923
+    },
+    "ANGI": {
+      "intrinsic": 24.31,
+      "discount": 2.95
+    },
+    "BJ": {
+      "intrinsic": 328.95,
+      "discount": 2.6738
+    },
+    "FLO": {
+      "intrinsic": 27.34,
+      "discount": 2.6994
+    },
+    "YELP": {
+      "intrinsic": 84.41,
+      "discount": 2.6206
+    },
+    "QNST": {
+      "intrinsic": 36.85,
+      "discount": 2.043
+    }
+  }
+}

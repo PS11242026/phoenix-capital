@@ -1,0 +1,238 @@
+{
+  "window": "157 weekly obs (~3.0y), total-return basis",
+  "benchmark_vol": 0.1508,
+  "rf": 0.0,
+  "per_name": {
+    "MMS": {
+      "weight": 0.1031,
+      "vol": 0.3074,
+      "beta": 0.342,
+      "corr_bench": 0.168,
+      "div_yield": 0.0213
+    },
+    "WHR": {
+      "weight": 0.0671,
+      "vol": 0.4509,
+      "beta": 1.032,
+      "corr_bench": 0.345,
+      "div_yield": 0.0349
+    },
+    "KR": {
+      "weight": 0.1095,
+      "vol": 0.2346,
+      "beta": -0.134,
+      "corr_bench": -0.086,
+      "div_yield": 0.0219
+    },
+    "CPB": {
+      "weight": 0.1098,
+      "vol": 0.2583,
+      "beta": -0.086,
+      "corr_bench": -0.05,
+      "div_yield": 0.0612
+    },
+    "CAG": {
+      "weight": 0.1177,
+      "vol": 0.2518,
+      "beta": -0.174,
+      "corr_bench": -0.104,
+      "div_yield": 0.0713
+    },
+    "ANGI": {
+      "weight": 0.0769,
+      "vol": 0.6923,
+      "beta": 1.607,
+      "corr_bench": 0.35,
+      "div_yield": null
+    },
+    "BJ": {
+      "weight": 0.1152,
+      "vol": 0.2616,
+      "beta": -0.045,
+      "corr_bench": -0.026,
+      "div_yield": null
+    },
+    "FLO": {
+      "weight": 0.0682,
+      "vol": 0.2994,
+      "beta": 0.221,
+      "corr_bench": 0.111,
+      "div_yield": 0.1515
+    },
+    "YELP": {
+      "weight": 0.078,
+      "vol": 0.3347,
+      "beta": 0.537,
+      "corr_bench": 0.242,
+      "div_yield": null
+    },
+    "QNST": {
+      "weight": 0.1545,
+      "vol": 0.4954,
+      "beta": 0.923,
+      "corr_bench": 0.281,
+      "div_yield": null
+    }
+  },
+  "corr_matrix": {
+    "tickers": [
+      "MMS",
+      "WHR",
+      "KR",
+      "CPB",
+      "CAG",
+      "ANGI",
+      "BJ",
+      "FLO",
+      "YELP",
+      "QNST"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.153,
+        0.056,
+        0.152,
+        0.193,
+        0.385,
+        -0.026,
+        0.144,
+        0.331,
+        0.153
+      ],
+      [
+        0.153,
+        1.0,
+        0.01,
+        0.168,
+        0.127,
+        0.2,
+        -0.078,
+        0.278,
+        0.125,
+        0.216
+      ],
+      [
+        0.056,
+        0.01,
+        1.0,
+        0.154,
+        0.28,
+        -0.027,
+        0.374,
+        0.11,
+        -0.077,
+        0.008
+      ],
+      [
+        0.152,
+        0.168,
+        0.154,
+        1.0,
+        0.701,
+        0.134,
+        0.07,
+        0.461,
+        0.102,
+        0.206
+      ],
+      [
+        0.193,
+        0.127,
+        0.28,
+        0.701,
+        1.0,
+        0.049,
+        0.107,
+        0.44,
+        0.036,
+        0.136
+      ],
+      [
+        0.385,
+        0.2,
+        -0.027,
+        0.134,
+        0.049,
+        1.0,
+        -0.056,
+        0.265,
+        0.396,
+        0.237
+      ],
+      [
+        -0.026,
+        -0.078,
+        0.374,
+        0.07,
+        0.107,
+        -0.056,
+        1.0,
+        -0.066,
+        -0.091,
+        -0.002
+      ],
+      [
+        0.144,
+        0.278,
+        0.11,
+        0.461,
+        0.44,
+        0.265,
+        -0.066,
+        1.0,
+        0.258,
+        0.323
+      ],
+      [
+        0.331,
+        0.125,
+        -0.077,
+        0.102,
+        0.036,
+        0.396,
+        -0.091,
+        0.258,
+        1.0,
+        0.351
+      ],
+      [
+        0.153,
+        0.216,
+        0.008,
+        0.206,
+        0.136,
+        0.237,
+        -0.002,
+        0.323,
+        0.351,
+        1.0
+      ]
+    ]
+  },
+  "portfolio": {
+    "beta": 0.378,
+    "vol": 0.1822,
+    "weighted_avg_vol": 0.3521,
+    "diversification_ratio": 1.932,
+    "effective_bets": 3.73,
+    "avg_pairwise_corr": 0.166,
+    "hhi": 0.1068,
+    "effective_n_names": 9.36,
+    "tracking_error": 0.1968,
+    "div_yield": 0.0324,
+    "realized_alpha": -0.1005,
+    "max_drawdown": -0.3829
+  },
+  "as_of": "2026-11-23",
+  "benchmark": "SPY",
+  "rf_basis": "USD convention (see riskstats.py docstring)",
+  "evidence": {
+    "backtest_alpha_spy": 0.0431,
+    "backtest_beta_spy": 1.431,
+    "backtest_alpha_qqq": 0.0555,
+    "backtest_beta_qqq": 1.016,
+    "source": "topn_sweep.csv discount_x_conf top_n=10, 42q 2015-2026, net 10bps/side",
+    "caveat": "survivorship-biased universe; robust stats are long-short +15.6%/yr and top-N minus universe +7.4%/yr"
+  }
+}

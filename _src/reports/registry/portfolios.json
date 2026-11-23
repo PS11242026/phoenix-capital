@@ -1,0 +1,25 @@
+{
+  "portfolios": [
+    {
+      "name": "conf_top10",
+      "book_id": "discount_x_conf_top10",
+      "source_build": "(migrated live paper book)",
+      "inception_date": "2026-06-04",
+      "starting_capital": null,
+      "display_capital": 1000000.0,
+      "strategy_version": "ew-top10-v1",
+      "signal_version": "discount_x_conf@paper-frozen-2026-06-05",
+      "folder": "managed_portfolios/conf_top10",
+      "status": "active",
+      "created_utc": "2026-11-13 23:34:11 UTC"
+    }
+  ],
+  "events": [
+    {
+      "ts": "2026-11-13 23:34:11 UTC",
+      "event": "seed",
+      "name": "conf_top10",
+      "note": "seeded from migrated live paper book (data unchanged)"
+    }
+  ]
+}

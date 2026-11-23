@@ -1,0 +1,63 @@
+# Runs the DCF platform's portfolio pipeline in the cloud and republishes this site.
+# prices -> track record -> risk stats -> news -> static pages, from the public engine repo,
+# with the managed-book state and authored content kept in _src/ of this repo.
+# Intraday quotes between runs come from the in-browser feed (FINNHUB_KEY secret).
+name: Refresh portfolio
+
+on:
+  schedule:
+    - cron: "0 15 * * 1-5"    # US session (UTC; ~10-11am New York)
+    - cron: "0 17 * * 1-5"
+    - cron: "0 19 * * 1-5"
+    - cron: "30 21 * * 1-5"   # after the close
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out the DCF engine
+        uses: actions/checkout@v4
+        with:
+          repository: PS11242026/dcf-valuation-platform
+          path: _engine
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: _engine/pyproject.toml
+
+      - name: Install engine
+        run: pip install -e ./_engine pillow
+
+      - name: Run pipeline
+        env:
+          DCF_REPORTS_DIR: ${{ github.workspace }}/_src/reports
+          DCF_SITE_CONTENT: ${{ github.workspace }}/_src/site_content
+          DCF_FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
+        run: |
+          python -m dcf_project portfolio manage update-all
+          python -m dcf_project portfolio manage riskstats --book conf_top10 \
+            || echo "::warning::riskstats failed; keeping the previous risk profile"
+          python -c "from dcf_project.site.builder import build; build(out_dir='.')"
+
+      - name: Publish
+        run: |
+          rm -rf _engine
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "data refresh $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push

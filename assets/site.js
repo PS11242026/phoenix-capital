@@ -263,7 +263,7 @@ function boot() {
   if (D.config.finnhub_key) {
     setTimeout(liveQuotes, 1500);
     setTimeout(liveNews, 3000);
-    setInterval(liveQuotes, (D.config.quote_seconds || 20) * 1000);
+    setInterval(liveQuotes, (D.config.quote_seconds || 60) * 1000);
     setInterval(liveNews, (D.config.news_seconds || 300) * 1000);
   }
 }
