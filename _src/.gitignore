@@ -2,3 +2,4 @@
 *.xlsx
 reports/managed_portfolios/*/figures/*.png
 reports/managed_portfolios/*/dashboard*
+*.pkl
