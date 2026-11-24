@@ -145,8 +145,8 @@
     const t0 = new URLSearchParams(location.search).get("t");
     if (t0) { input.value = t0.toUpperCase(); start(t0.toUpperCase(), false, true); }
   }
-  const STEPS = ["Fetching SEC filings and market data", "Fitting the Kalman state-space FCF model",
-    "Discounting cash flows and terminal value", "Running sensitivity and building the report"];
+  const STEPS = ["Fetching SEC filings and market data", "Deriving growth, margin, RONIC and reinvestment drivers",
+    "Fading drivers to the terminal and discounting", "Running sensitivity and building the report"];
   function progress(t, msg, elapsed, waking) {
     const est = 35, frac = Math.min(0.95, (elapsed || 0) / est), si = Math.min(STEPS.length - 1, Math.floor(frac * STEPS.length));
     q("#az-status").innerHTML = `<div class="card az-prog">
@@ -190,14 +190,14 @@
       if (body.status === "done") { q("#az-status").innerHTML = ""; renderReport(body.report); return; }
       if (body.status === "error") { q("#az-status").innerHTML = `<div class="callout"><b>${esc(t)}:</b> ${esc(body.error)}</div>`; return; }
       const el = (Date.now() - t0) / 1000;
-      progress(t, body.status === "queued" && body.position > 1 ? `Queued: ${body.position - 1} analysis ahead of yours.` : "Running the canonical DCF engine live. A full report usually takes 20–60 seconds.", el, false);
+      progress(t, body.status === "queued" && body.position > 1 ? `Queued: ${body.position - 1} analysis ahead of yours.` : "Running the Fundamentals Fade DCF live. A full report usually takes 20–60 seconds.", el, false);
       await sleep(2500);
     }
   }
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   function rangeBar(p10, p90, iv, px) {
-    if (p10 == null || p90 == null) return "";
+    if (p10 == null || p90 == null || Math.abs(p90 - p10) <= 0.005 * Math.abs(iv)) return "";
     const lo = Math.min(p10, px || p10, iv) * 0.9, hi = Math.max(p90, px || p90, iv) * 1.05;
     const P = v => ((v - lo) / (hi - lo) * 100).toFixed(2);
     return `<div class="card rb"><h3>Where the price sits in the model's value range <span class="sub">P10 – P90 intrinsic value</span></h3>
@@ -265,10 +265,10 @@
         <div class="tile"><div class="lab">Verdict</div><div class="val"><span class="verdict ${verdictCls(r.verdict)}">${esc(r.verdict)}</span></div><div class="sub">${esc(r.confidence || "")}</div></div>
       </div>
       ${rangeBar(item.p10, item.p90, iv, px)}
-      ${chart ? `<section class="card chart rp-chart"><h3>Revenue &amp; free cash flow <span class="sub">quarterly, $ · reported history then Kalman-filtered forecast</span></h3>${chart}</section>` : ""}
+      ${chart ? `<section class="card chart rp-chart"><h3>Revenue &amp; free cash flow <span class="sub">quarterly, $ · reported history then the fade forecast</span></h3>${chart}</section>` : ""}
       <nav class="rp-toc">${secs.map((s, i) => `<a href="#sec-${i}">${esc(s.title)}</a>`).join("")}</nav>
       ${secs.map(sectionHTML).join("")}
-      <p class="rp-foot">Generated live by the open-source canonical engine (${esc(r.engine)}) from SEC EDGAR filings and market data. Research and education only; not investment advice.</p>`;
+      <p class="rp-foot">Generated live by the open-source ${esc(r.engine_label || "engine " + r.engine)} from SEC EDGAR filings and market data. Research and education only; not investment advice.</p>`;
     q("#rp-save").addEventListener("click", e => { addToBasket(item); e.currentTarget.textContent = "★ In your basket"; });
     q("#rp-rerun").addEventListener("click", () => start(r.ticker, true));
     livePrice(r.ticker, iv);
