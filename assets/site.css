@@ -428,3 +428,10 @@ nav.main a .bcount[hidden]{display:none}
 .desk-nav .bcount{display:inline-block;min-width:17px;height:17px;line-height:17px;margin-left:4px;padding:0 5px;
   border-radius:99px;background:var(--brand);color:#fff;font:700 10px var(--mono);text-align:center}
 .desk-nav .bcount[hidden]{display:none}
+/* header fits 7 nav items: no wrapping; the as-of text yields first, then the RESEARCH tag */
+.brand,.brand .wordmark,nav.main a{white-space:nowrap}
+nav.main{gap:2px}
+nav.main a{padding:7px 10px}
+.site-head .wrap{gap:18px}
+@media (max-width:1240px){.asof .txt{display:none}}
+@media (max-width:1120px){.brand small{display:none}}
