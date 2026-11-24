@@ -8,7 +8,14 @@
   "news_seconds": 300,
   "finnhub_key": "",
   "books": [
-    {"key": "us", "name": "conf_top10", "label": "US Deep-Discount 10",
-     "nav": "Portfolio", "flag": "us", "status_badge": "live"}
-  ]
+    {
+      "key": "us",
+      "name": "conf_top10",
+      "label": "US Deep-Discount 10",
+      "nav": "Portfolio",
+      "flag": "us",
+      "status_badge": "live"
+    }
+  ],
+  "analyzer_url": "https://phoenix-dcf.streamlit.app"
 }
