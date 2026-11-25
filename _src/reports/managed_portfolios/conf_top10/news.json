@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "items": [
     {
       "symbol": "ANGI",
@@ -101,6 +101,13 @@
     },
     {
       "symbol": "KR",
+      "title": "Home Depot and Lowe's copy Kroger's risky cost-cutting move",
+      "publisher": "TheStreet",
+      "link": "https://www.thestreet.com/retail/home-depot-and-lowes-quietly-send-american-jobs-to-india",
+      "published": "2026-11-25T00:17:00Z"
+    },
+    {
+      "symbol": "KR",
       "title": "Dentsu X Retains Grocery Giant Kroger",
       "publisher": "MediaPost",
       "link": "https://www.mediapost.com/publications/article/419663/dentsu-x-retains-grocery-giant-kroger.html",
@@ -112,13 +119,6 @@
       "publisher": "GuruFocus.com",
       "link": "https://finance.yahoo.com/markets/stocks/articles/village-super-market-vlgea-stock-180047822.html",
       "published": "2026-11-24T18:00:47Z"
-    },
-    {
-      "symbol": "KR",
-      "title": "Wonder Reportedly Shopping Grubhub to Potential Buyers",
-      "publisher": "QSR",
-      "link": "https://www.qsrmagazine.com/story/wonder-reportedly-shopping-grubhub-to-potential-buyers/",
-      "published": "2026-11-24T12:50:42Z"
     },
     {
       "symbol": "MMS",
