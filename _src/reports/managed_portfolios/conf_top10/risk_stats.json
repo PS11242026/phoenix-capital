@@ -224,7 +224,7 @@
     "realized_alpha": -0.1033,
     "max_drawdown": -0.3853
   },
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "benchmark": "SPY",
   "rf_basis": "USD convention (see riskstats.py docstring)",
   "evidence": {

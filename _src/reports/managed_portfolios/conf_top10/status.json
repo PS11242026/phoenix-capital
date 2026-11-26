@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "book": "conf_top10",
   "book_id": "discount_x_conf_top10",
   "currency": "USD",
   "inception": "2026-06-04",
-  "days": 174,
+  "days": 175,
   "capital": 1000000.0,
   "capital_basis": "notional",
   "cash": 0.0,
@@ -31,8 +31,8 @@
       "kind": "run_rate",
       "note": "reported ~10.72%/yr net run-rate compounded over the window; no daily NAV published",
       "symbol": null,
-      "return": 0.049743311563198,
-      "active": -0.02891879527155732
+      "return": 0.05003622881060976,
+      "active": -0.02921171251896908
     },
     {
       "name": "Russell 2000 (IWM)",
@@ -253,9 +253,9 @@
     "primary_benchmark": "SPY",
     "alpha_basis": "simple_excess_return",
     "max_drawdown": -0.1503846261168077,
-    "sharpe": 0.28661893055102294,
-    "volatility": 0.298088010668796,
-    "beta": -0.00340207511503675,
+    "sharpe": 0.285469780414299,
+    "volatility": 0.29689365147633395,
+    "beta": -0.003411022353288098,
     "turnover": null,
     "hhi": 0.38338757774844695,
     "day_change": 0.012966064250114526,
