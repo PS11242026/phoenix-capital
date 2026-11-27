@@ -1,0 +1,57 @@
+# Free Streamlit Community Cloud apps go to sleep after a period without visitors, and the
+# "wake up" button does not work reliably inside the site's embedded Analyze iframe.
+# A real headless browser session counts as a visit (a plain HTTP GET does not), so this
+# opens each app, clicks the wake button if the app is asleep, and waits for it to boot.
+name: Keep Streamlit apps awake
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - https://state-spacedcf-valuation-platform.streamlit.app
+          - https://optionpricingengine.streamlit.app
+          - https://ps-itr.streamlit.app
+          - https://ps-audit-tool.streamlit.app
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install headless Chromium
+        run: |
+          pip install playwright==1.49.1
+          python -m playwright install --with-deps chromium
+      - name: Visit and wake ${{ matrix.app }}
+        env:
+          APP_URL: ${{ matrix.app }}
+        shell: python
+        run: |
+          import os, sys
+          from playwright.sync_api import sync_playwright
+          url = os.environ["APP_URL"]
+          with sync_playwright() as p:
+              page = p.chromium.launch().new_page()
+              page.goto(url, timeout=90_000)
+              page.wait_for_timeout(8_000)
+              wake = page.get_by_role("button", name="Yes, get this app back up!")
+              if wake.count():
+                  print("App was asleep; waking it")
+                  wake.click()
+              try:
+                  page.frame_locator("iframe[title='streamlitApp']").locator(
+                      "[data-testid='stMain']").wait_for(timeout=240_000)
+              except Exception:
+                  print(f"::error::{url} did not finish booting within 4 minutes")
+                  sys.exit(1)
+              print(f"{url} is awake")
